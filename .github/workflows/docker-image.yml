@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      name: Clone repository
+    - uses: azure/login@v1
+      name: Authenticate against Azure
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    - name: Build the Docker image
+      run: az acr build -r cormtestacr -t sampleapp:latest .
