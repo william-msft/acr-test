@@ -6,8 +6,6 @@ on:
   push:
     branches:
       [ random-branch ]
-    paths:
-    - './**'
 
   # Allow mannually trigger
   workflow_dispatch:
