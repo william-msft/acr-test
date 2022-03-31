@@ -51,7 +51,12 @@ jobs:
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:github-actions oryx dockerfile --output /app/test.Dockerfile /app
       
       - name: Edit Dockerfile
-        run: sed -i 's|RUN cd /app && oryx|RUN cd /app && oryx create-script|' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
+        shell: pwsh
+        run: |
+          $Path = (Get-ChildItem -Path ./tests/SampleApps/${{ matrix.app }}/test.Dockerfile).FullName
+          $Text = [System.IO.File]::ReadAllText($Path)
+          $Text = $Text.Replace("RUN cd /app && oryx", "RUN cd /app && oryx create-script")
+          [System.IO.File]::WriteAllText($Path, $Text)
         
       - name: Display Dockerfile
         run: cat $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
