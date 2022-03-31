@@ -53,5 +53,8 @@ jobs:
       - name: Edit Dockerfile
         run: sed -i 's|RUN cd /app && oryx|RUN cd /app && oryx create-script|' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
         
+      - name: Display Dockerfile
+        run: cat /app/test.Dockerfile
+        
       - name: Build Dockerfile
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:github-actions oryx build /app --debug
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:github-actions oryx build /app
