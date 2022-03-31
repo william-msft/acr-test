@@ -43,10 +43,15 @@ jobs:
           - python/shapely-flask-app
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
         with:
           repository: microsoft/Oryx
       
+      - name: Generate Dockerfile
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:github-actions oryx dockerfile --output /app/test.Dockerfile /app
+      
+      - name: Edit Dockerfile
+        run: sed -i '10s/.*/RUN cd /app && oryx create-script/' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
+        
       - name: Build Dockerfile
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:github-actions oryx dockerfile --output /app/Dockerfile /app
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:github-actions oryx build /app --debug
