@@ -53,7 +53,7 @@ jobs:
       - name: Edit Dockerfile
         run: |
           sed -i 's/\&\& oryx/\&\& oryx create-script/' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
-          sed -i 's/build\:latest/build\:github-actions/' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
+          sed -i 's/build\:latest/build\:azfunc-jamstack/' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
           sed -i -E '1s/(.*):.*/\1:dynamic/' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
         
       - name: Display Dockerfile
