@@ -48,8 +48,7 @@ jobs:
           repository: microsoft/Oryx
       
       - name: Generate Dockerfile
-        working-directory: $(pwd)/tests/SampleApps/${{ matrix.app }}
-        run: docker run --rm -v $(pwd):/app mcr.microsoft.com/oryx/build:github-actions oryx dockerfile --output /app/test.Dockerfile /app
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:github-actions oryx dockerfile --output /app/test.Dockerfile /app
       
       - name: Edit Dockerfile
         run: sed -i 's/\&\& oryx/\&\& oryx create-script/' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
@@ -58,5 +57,4 @@ jobs:
         run: cat $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
         
       - name: Build Dockerfile
-        working-directory: $(pwd)/tests/SampleApps/${{ matrix.app }}
-        run: docker build -t test:${{ matrix.app }} -f $(pwd)/test.Dockerfile $(pwd)
+        run: docker build -t test:${{ matrix.app }} -f $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile $(pwd)/tests/SampleApps/${{ matrix.app }}
