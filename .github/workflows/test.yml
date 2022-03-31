@@ -51,7 +51,7 @@ jobs:
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:github-actions oryx dockerfile --output /app/test.Dockerfile /app
       
       - name: Edit Dockerfile
-        run: sed -i 's/&& oryx/&& oryx create-script/' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
+        run: sed -i 's/\&\& oryx/\&\& oryx create-script/' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
         
       - name: Display Dockerfile
         run: cat $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
