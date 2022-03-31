@@ -23,23 +23,19 @@ jobs:
           - DotNetCore/NetCoreApp31.MvcApp
           - nodejs/angular6app
           - nodejs/angular8app
-          - nodejs/blog-starter-nextjs
           - nodejs/express-config-js
           - nodejs/helloworld-nuxtjs
           - nodejs/monorepo-lerna-npm
           - nodejs/nextjs-yarn2-example
           - nodejs/node-mssql
           - nodejs/node-postgres
-          - nodejs/soundcloud-ngrx
           - nodejs/vuepress
           - nodejs/webfrontend-yarnlock
           - python/django-app
           - python/flask-app
           - python/http-server-py
-          - python/microblog
           - python/mssqlserver-sample
           - python/postgres-sample
-          - python/python2-flask-app
           - python/shapely-flask-app
 
     steps:
