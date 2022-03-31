@@ -12,35 +12,35 @@ jobs:
       matrix:
         app:
           - azureFunctionsApps/DotNetCore_HttpTriggerV3Sample
-          - azureFunctionsApps/Node_HttpTriggerSample
-          - azureFunctionsApps/Python_HttpTriggerSample
-          - DotNetCore/Net5BlazorWasmClientApp
-          - DotNetCore/Net5MvcApp
-          - DotNetCore/NetCore6BlazorWasmApp
-          - DotNetCore/NetCore6PreviewMvcApp
-          - DotNetCore/NetCore7PreviewMvcApp
-          - DotNetCore/NetCoreApp30.MvcApp
-          - DotNetCore/NetCoreApp31.MvcApp
-          - nodejs/angular6app
-          - nodejs/angular8app
-          - nodejs/blog-starter-nextjs
-          - nodejs/express-config-js
-          - nodejs/helloworld-nuxtjs
-          - nodejs/monorepo-lerna-npm
-          - nodejs/nextjs-yarn2-example
-          - nodejs/node-mssql
-          - nodejs/node-postgres
-          - nodejs/soundcloud-ngrx
-          - nodejs/vuepress
-          - nodejs/webfrontend-yarnlock
-          - python/django-app
-          - python/flask-app
-          - python/http-server-py
-          - python/microblog
-          - python/mssqlserver-sample
-          - python/postgres-sample
-          - python/python2-flask-app
-          - python/shapely-flask-app
+#           - azureFunctionsApps/Node_HttpTriggerSample
+#           - azureFunctionsApps/Python_HttpTriggerSample
+#           - DotNetCore/Net5BlazorWasmClientApp
+#           - DotNetCore/Net5MvcApp
+#           - DotNetCore/NetCore6BlazorWasmApp
+#           - DotNetCore/NetCore6PreviewMvcApp
+#           - DotNetCore/NetCore7PreviewMvcApp
+#           - DotNetCore/NetCoreApp30.MvcApp
+#           - DotNetCore/NetCoreApp31.MvcApp
+#           - nodejs/angular6app
+#           - nodejs/angular8app
+#           - nodejs/blog-starter-nextjs
+#           - nodejs/express-config-js
+#           - nodejs/helloworld-nuxtjs
+#           - nodejs/monorepo-lerna-npm
+#           - nodejs/nextjs-yarn2-example
+#           - nodejs/node-mssql
+#           - nodejs/node-postgres
+#           - nodejs/soundcloud-ngrx
+#           - nodejs/vuepress
+#           - nodejs/webfrontend-yarnlock
+#           - python/django-app
+#           - python/flask-app
+#           - python/http-server-py
+#           - python/microblog
+#           - python/mssqlserver-sample
+#           - python/postgres-sample
+#           - python/python2-flask-app
+#           - python/shapely-flask-app
 
     steps:
       - uses: actions/checkout@v3
@@ -51,7 +51,7 @@ jobs:
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:github-actions oryx dockerfile --output /app/test.Dockerfile /app
       
       - name: Edit Dockerfile
-        run: sed -i '10s/.*/RUN cd /app && oryx create-script/' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
+        run: sed -i 's|RUN cd /app && oryx|RUN cd /app && oryx create-script|' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
         
       - name: Build Dockerfile
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:github-actions oryx build /app --debug
