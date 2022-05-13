@@ -43,17 +43,5 @@ jobs:
         with:
           repository: microsoft/Oryx
       
-      - name: Generate Dockerfile
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:github-actions oryx dockerfile --output /app/test.Dockerfile /app
-      
-      - name: Edit Dockerfile
-        run: |
-          sed -i 's/\&\& oryx/\&\& oryx create-script/' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
-          sed -i 's/build\:latest/build\:azfunc-jamstack/' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
-          sed -i -E '1s/(.*):.*/\1:dynamic/' $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
-        
-      - name: Display Dockerfile
-        run: cat $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile
-        
-      - name: Build Dockerfile
-        run: docker build -t test:tag -f $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile $(pwd)/tests/SampleApps/${{ matrix.app }}
+      - name: Build application
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/cli:stable oryx build /app
