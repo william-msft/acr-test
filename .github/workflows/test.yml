@@ -44,4 +44,4 @@ jobs:
           repository: microsoft/Oryx
       
       - name: Build application
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/cli:stable oryx build /app
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app cormtestacr.azurecr.io/oryx/cli:latest oryx build /app
