@@ -12,30 +12,51 @@ jobs:
       matrix:
         app:
           - azureFunctionsApps/DotNetCore_HttpTriggerV3Sample
+          - azureFunctionsApps/DotNetCore_HttpTriggerV4Sample
           - azureFunctionsApps/Node_HttpTriggerSample
           - azureFunctionsApps/Python_HttpTriggerSample
+          - azureFunctionsApps/TypeScript_HttpTriggerSample
+          - DotNetCore/aspnetcore20
           - DotNetCore/Net5BlazorWasmClientApp
           - DotNetCore/Net5MvcApp
           - DotNetCore/NetCore6BlazorWasmApp
           - DotNetCore/NetCore6PreviewMvcApp
           - DotNetCore/NetCore7PreviewMvcApp
+          - DotNetCore/NetCore60IsolatedApp
           - DotNetCore/NetCoreApp30.MvcApp
           - DotNetCore/NetCoreApp31.MvcApp
+          - DotNetCore/NetCoreApp50MvcApp
           - nodejs/angular6app
           - nodejs/angular8app
+          - nodejs/create-react-app-sample
           - nodejs/helloworld-nuxtjs
           - nodejs/monorepo-lerna-npm
           - nodejs/nextjs-yarn2-example
+          - nodejs/NodeAndTypeScriptHelloWorld
           - nodejs/node-mssql
           - nodejs/node-postgres
+          - nodejs/node-sass-example
+          - nodejs/soundcloud-ngrx
           - nodejs/vuepress
           - nodejs/webfrontend-yarnlock
+          - nodejs/websocket
+          - php/exif-example
+          - php/gd-example
+          - php/mysqli-example
+          - php/pgsql-example
+          - php/sqlsrv-example
+          - php/twig-example
+          - php/wordpress-example
           - python/django-app
           - python/flask-app
+          - python/Flask-React-Postgres
           - python/http-server-py
           - python/mssqlserver-sample
           - python/postgres-sample
+          - python/python2-flask-app
+          - python/React-Redux-Flask-app
           - python/shapely-flask-app
+          - python/tweeter3
 
     steps:
       - uses: actions/checkout@v3
