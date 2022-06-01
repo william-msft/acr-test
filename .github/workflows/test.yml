@@ -49,14 +49,10 @@ jobs:
           - php/wordpress-example
           - python/django-app
           - python/flask-app
-          - python/Flask-React-Postgres
           - python/http-server-py
           - python/mssqlserver-sample
           - python/postgres-sample
-          - python/python2-flask-app
-          - python/React-Redux-Flask-app
           - python/shapely-flask-app
-          - python/tweeter3
 
     steps:
       - uses: actions/checkout@v3
