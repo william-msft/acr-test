@@ -61,7 +61,7 @@ jobs:
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app cormtestacr.azurecr.io/oryx/cli:latest oryx dockerfile --output /app/test.Dockerfile
       
       - name: Build image from Dockerfile
-        run: docker build -f $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile -t corm/localtest
+        run: docker build -f $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile -t corm/localtest .
 
       - name: Run container with image
         run: docker run --rm corm/localtest
