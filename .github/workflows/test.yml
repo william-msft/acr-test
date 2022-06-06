@@ -16,7 +16,6 @@ jobs:
           - azureFunctionsApps/Node_HttpTriggerSample
           - azureFunctionsApps/Python_HttpTriggerSample
           - azureFunctionsApps/TypeScript_HttpTriggerSample
-          - DotNetCore/aspnetcore20
           - DotNetCore/Net5BlazorWasmClientApp
           - DotNetCore/Net5MvcApp
           - DotNetCore/NetCore6BlazorWasmApp
@@ -35,8 +34,6 @@ jobs:
           - nodejs/NodeAndTypeScriptHelloWorld
           - nodejs/node-mssql
           - nodejs/node-postgres
-          - nodejs/node-sass-example
-          - nodejs/soundcloud-ngrx
           - nodejs/vuepress
           - nodejs/webfrontend-yarnlock
           - nodejs/websocket
