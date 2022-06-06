@@ -58,7 +58,7 @@ jobs:
           repository: microsoft/Oryx
       
       - name: Create Dockerfile
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app cormtestacr.azurecr.io/oryx/cli:latest oryx dockerfile --output /app/test.Dockerfile
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app cormtestacr.azurecr.io/oryx/cli:latest oryx dockerfile --output /app/test.Dockerfile /app
       
       - name: Build image from Dockerfile
         run: docker build -f $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile -t corm/localtest .
