@@ -1,4 +1,4 @@
-name: Test - cli:latest - Oryx Dockerfile
+name: Sanity Test - build:latest - Oryx Dockerfile
 
 on:
   workflow_dispatch:
