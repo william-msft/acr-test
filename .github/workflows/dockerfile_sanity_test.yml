@@ -1,4 +1,4 @@
-name: Sanity Test - build:latest - Oryx Dockerfile
+name: Dockerfile Sanity Test - build:latest
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
 
     strategy:
       fail-fast: false
@@ -26,8 +26,7 @@ jobs:
           - DotNetCore/NetCoreApp30.MvcApp
           - DotNetCore/NetCoreApp31.MvcApp
           - DotNetCore/NetCoreApp50MvcApp
-          - nodejs/angular6app
-          - nodejs/angular8app
+          - nodejs/angular14app
           - nodejs/create-react-app-sample
           - nodejs/helloworld-nuxtjs
           - nodejs/monorepo-lerna-npm
@@ -57,14 +56,11 @@ jobs:
         with:
           repository: microsoft/Oryx
       
-      # - name: Create Dockerfile
-      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app pauldtestacr.azurecr.io/oryx/cli:latest oryx dockerfile /app --output /app/test.Dockerfile
+      - name: Create Dockerfile
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app pauldtestacr.azurecr.io/oryx/build:latest oryx dockerfile /app --output /app/test.Dockerfile
       
-      # - name: Build image from Dockerfile
-      #   run: docker build -f $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile -t pauld/localtest $(pwd)/tests/SampleApps/${{ matrix.app }}
+      - name: Build image from Dockerfile
+        run: docker build -f $(pwd)/tests/SampleApps/${{ matrix.app }}/test.Dockerfile -t pauld/localtest $(pwd)/tests/SampleApps/${{ matrix.app }}
 
-      # - name: Run container with image
-      #   run: docker run --rm pauld/localtest
-
-      - name: Build application
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app pauldtestacr.azurecr.io/oryx/build:latest oryx build /app
+      - name: Run container with image
+        run: docker run --rm pauld/localtest
