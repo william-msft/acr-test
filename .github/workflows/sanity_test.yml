@@ -67,4 +67,4 @@ jobs:
       #   run: docker run --rm pauld/localtest
 
       - name: Build application
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app cormtestacr.azurecr.io/oryx/cli:latest oryx build /app
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app pauldtestacr.azurecr.io/oryx/build:latest oryx build /app
