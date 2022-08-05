@@ -26,6 +26,10 @@ jobs:
           - DotNetCore/NetCoreApp30.MvcApp
           - DotNetCore/NetCoreApp31.MvcApp
           - DotNetCore/NetCoreApp50MvcApp
+          - golang/hello-world
+          - hugo/hugo-sample
+          - java/MavenSimpleJavaApp
+          - multilanguage/dotNetCoreReactApp
           - nodejs/angular14app
           - nodejs/create-react-app-sample
           - nodejs/helloworld-nuxtjs
@@ -44,12 +48,16 @@ jobs:
           - php/sqlsrv-example
           - php/twig-example
           - php/wordpress-example
+          - php/php-fpm-config
           - python/django-app
           - python/flask-app
           - python/http-server-py
           - python/mssqlserver-sample
           - python/postgres-sample
           - python/shapely-flask-app
+          - ruby/Jekyll-app
+          - ruby/ruby-on-rails-app
+          - ruby/sinatra-app
 
     steps:
       - uses: actions/checkout@v3

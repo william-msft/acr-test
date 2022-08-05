@@ -1,4 +1,4 @@
-name: Build Test Dev Storage Account - github-actions-buster
+name: Build Test Prod Storage Account - github-actions-buster
 
 on:
   workflow_dispatch:
@@ -65,4 +65,4 @@ jobs:
           repository: microsoft/Oryx
 
       - name: Build application
-        run: docker run --rm --env ORYX_SDK_STORAGE_BASE_URL="https://oryxsdksdev.blob.core.windows.net" -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app pauldtestacr.azurecr.io/oryx/build:github-actions-buster oryx build /app --debug
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app pauldtestacr.azurecr.io/oryx/build:github-actions-buster oryx build /app --debug
