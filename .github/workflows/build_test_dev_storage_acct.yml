@@ -29,7 +29,6 @@ jobs:
           - golang/hello-world
           - hugo/hugo-sample
           - java/MavenSimpleJavaApp
-          - multilanguage/dotNetCoreReactApp
           - nodejs/angular14app
           - nodejs/create-react-app-sample
           - nodejs/helloworld-nuxtjs
