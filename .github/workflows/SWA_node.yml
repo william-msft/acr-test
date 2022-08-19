@@ -23,10 +23,17 @@ jobs:
           - nodejs/vuepress
           - nodejs/webfrontend-yarnlock
           - nodejs/websocket
+          - StaticWebAppsSamples/ReactClientNodeServer
         versionString: 
-        - "--platform nodejs --platform-version 12"
-        - "--platform nodejs --platform-version 14"
-        - "--platform nodejs --platform-version 16"
+          - "--platform nodejs --platform-version 12"
+          - "--platform nodejs --platform-version 14"
+          - "--platform nodejs --platform-version 16"
+        exclude:
+          - app: nodejs/angular14app
+            versionString: "--platform nodejs --platform-version 12"
+          - app: nodejs/angular14app
+            versionString: "--platform nodejs --platform-version 16"
+
 
     steps:
       - uses: actions/checkout@v3
