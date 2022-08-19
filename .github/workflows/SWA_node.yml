@@ -23,7 +23,6 @@ jobs:
           - nodejs/vuepress
           - nodejs/webfrontend-yarnlock
           - nodejs/websocket
-          - StaticWebAppsSamples/ReactClientNodeServer
         versionString: 
           - "--platform nodejs --platform-version 12"
           - "--platform nodejs --platform-version 14"
