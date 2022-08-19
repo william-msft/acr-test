@@ -33,6 +33,8 @@ jobs:
             versionString: "--platform nodejs --platform-version 12"
           - app: nodejs/angular14app
             versionString: "--platform nodejs --platform-version 16"
+          - app: nodejs/NodeAndTypeScriptHelloWorld
+            versionString: "--platform nodejs --platform-version 16"
 
 
     steps:
