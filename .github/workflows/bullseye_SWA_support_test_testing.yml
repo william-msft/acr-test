@@ -10,13 +10,55 @@ jobs:
 
     strategy:
       fail-fast: false
-      matrix:
-      - NetCore6BlazorWasmApp:
-        - app: DotNetCore/NetCore6BlazorWasmApp
-      - NetCore6PreviewMvcApp:
-        - app: DotNetCore/NetCore6PreviewMvcApp
-      - NetCore7PreviewMvcApp:
-        - app: DotNetCore/NetCore7PreviewMvcApp
+      matrix:      
+        app:    
+          - azureFunctionsApps/DotNetCore_HttpTriggerV3Sample
+          - azureFunctionsApps/DotNetCore_HttpTriggerV4Sample
+          - azureFunctionsApps/Node_HttpTriggerSample
+          - azureFunctionsApps/Python_HttpTriggerSample
+          - azureFunctionsApps/TypeScript_HttpTriggerSample
+          - DotNetCore/NetCore6BlazorWasmApp
+          - DotNetCore/NetCore6PreviewMvcApp
+          - DotNetCore/NetCore7PreviewMvcApp
+          - DotNetCore/NetCore60IsolatedApp
+          - DotNetCore/NetCoreApp31.MvcApp
+          - golang/hello-world
+          - hugo/hugo-sample
+          - java/MavenSimpleJavaApp
+          - nodejs/angular14app
+          - nodejs/create-react-app-sample
+          - nodejs/helloworld-nuxtjs
+          - nodejs/monorepo-lerna-npm
+          - nodejs/nextjs-yarn2-example
+          - nodejs/NodeAndTypeScriptHelloWorld
+          - nodejs/node-mssql
+          - nodejs/node-postgres
+          - nodejs/vuepress
+          - nodejs/webfrontend-yarnlock
+          - nodejs/websocket
+          - php/exif-example
+          - php/gd-example
+          - php/mysqli-example
+          - php/pgsql-example
+          - php/sqlsrv-example
+          - php/twig-example
+          - php/wordpress-example
+          - php/php-fpm-config
+          - python/django-app
+          - python/flask-app
+          - python/http-server-py
+          - python/mssqlserver-sample
+          - python/postgres-sample
+          - python/shapely-flask-app
+          - ruby/Jekyll-app
+          - ruby/ruby-on-rails-app
+          - ruby/sinatra-app
+          - StaticWebAppsSamples/HugoClientDotNetCoreServer
+          - StaticWebAppsSamples/ReactClientNodeServer
+        include:
+          - versionString: ""
+          - versionString: "--platform nodejs --platform-version 18"
+            app: nodejs/create-react-app-sample
 
     steps:
       - uses: actions/checkout@v3
@@ -24,4 +66,4 @@ jobs:
           repository: microsoft/Oryx
 
       - name: Build application
-        run: docker run --rm --env ORYX_SDK_STORAGE_BASE_URL="https://oryxsdksdev.blob.core.windows.net" -v $(pwd)/tests/SampleApps/${{ app }}:/app mcr.microsoft.com/oryx/build:github-actions-bullseye oryx build /app --debug
+        run: docker run --rm --env ORYX_SDK_STORAGE_BASE_URL="https://oryxsdksdev.blob.core.windows.net" -v $(pwd)/tests/SampleApps/${{ app }}:/app mcr.microsoft.com/oryx/build:github-actions-bullseye oryx build /app ${{ versionString }} --debug
