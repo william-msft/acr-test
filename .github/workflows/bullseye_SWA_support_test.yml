@@ -13,133 +13,133 @@ jobs:
       matrix:
         test:
           app: azureFunctionsApps/DotNetCore_HttpTriggerV3Sample
-          versionString: 
+          versionString: ""
         test:
           app: azureFunctionsApps/DotNetCore_HttpTriggerV4Sample
-          versionString: 
+          versionString: ""
         test:
           app: azureFunctionsApps/Node_HttpTriggerSample
-          versionString: 
+          versionString: ""
         test:
           app: azureFunctionsApps/Python_HttpTriggerSample
-          versionString: 
+          versionString: ""
         test:
           app: azureFunctionsApps/TypeScript_HttpTriggerSample
-          versionString: 
+          versionString: ""
         test:
           app: DotNetCore/NetCore6BlazorWasmApp
-          versionString: 
+          versionString: ""
         test:
           app: DotNetCore/NetCore6PreviewMvcApp
-          versionString: 
+          versionString: ""
         test:
           app: DotNetCore/NetCore7PreviewMvcApp
-          versionString: 
+          versionString: ""
         test:
           app: DotNetCore/NetCore60IsolatedApp
-          versionString: 
+          versionString: ""
         test:
           app: DotNetCore/NetCoreApp31.MvcApp
-          versionString: 
+          versionString: ""
         test:
           app: golang/hello-world
-          versionString: 
+          versionString: ""
         test:
           app: hugo/hugo-sample
-          versionString: 
+          versionString: ""
         test:
           app: java/MavenSimpleJavaApp
-          versionString: 
+          versionString: ""
         test:
           app: nodejs/angular14app
-          versionString: 
+          versionString: ""
         test:
           app: nodejs/create-react-app-sample
-          versionString: 
+          versionString: ""
         test:
           app: nodejs/helloworld-nuxtjs
-          versionString: 
+          versionString: ""
         test:
           app: nodejs/monorepo-lerna-npm
-          versionString: 
+          versionString: ""
         test:
           app: nodejs/nextjs-yarn2-example
-          versionString: 
+          versionString: ""
         test:
           app: nodejs/NodeAndTypeScriptHelloWorld
-          versionString: 
+          versionString: ""
         test:
           app: nodejs/node-mssql
-          versionString: 
+          versionString: ""
         test:
           app: nodejs/node-postgres
-          versionString: 
+          versionString: ""
         test:
           app: nodejs/vuepress
-          versionString: 
+          versionString: ""
         test:
           app: nodejs/webfrontend-yarnlock
-          versionString: 
+          versionString: ""
         test:
           app: nodejs/websocket
-          versionString: 
+          versionString: ""
         test:
           app: php/exif-example
-          versionString: 
+          versionString: ""
         test:
           app: php/gd-example
-          versionString: 
+          versionString: ""
         test:
           app: php/mysqli-example
-          versionString: 
+          versionString: ""
         test:
           app: php/pgsql-example
-          versionString: 
+          versionString: ""
         test:
           app: php/sqlsrv-example
-          versionString: 
+          versionString: ""
         test:
           app: php/twig-example
-          versionString: 
+          versionString: ""
         test:
           app: php/wordpress-example
-          versionString: 
+          versionString: ""
         test:
           app: php/php-fpm-config
-          versionString: 
+          versionString: ""
         test:
           app: python/django-app
-          versionString: 
+          versionString: ""
         test:
           app: python/flask-app
-          versionString: 
+          versionString: ""
         test:
           app: python/http-server-py
-          versionString: 
+          versionString: ""
         test:
           app: python/mssqlserver-sample
-          versionString: 
+          versionString: ""
         test:
           app: python/postgres-sample
-          versionString: 
+          versionString: ""
         test:
           app: python/shapely-flask-app
-          versionString: 
+          versionString: ""
         test:
           app: ruby/Jekyll-app
-          versionString: 
+          versionString: ""
         test:
           app: ruby/ruby-on-rails-app
-          versionString: 
+          versionString: ""
         test:
           app: ruby/sinatra-app
-          versionString: 
+          versionString: ""
         test:
           app: StaticWebAppsSamples/HugoClientDotNetCoreServer
-          versionString: 
+          versionString: ""
         test:
           app: StaticWebAppsSamples/ReactClientNodeServer
-          versionString: 
+          versionString: ""
 
     steps:
       - uses: actions/checkout@v3
