@@ -59,6 +59,27 @@ jobs:
           - versionString: ""
           - versionString: "--platform nodejs --platform-version 18"
             app: nodejs/create-react-app-sample
+          - versionString: "--platform nodejs --platform-version 18"
+            app: nodejs/angular14app
+          - versionString: "--platform nodejs --platform-version 18"
+            app: nodejs/helloworld-nuxtjs
+          - versionString: "--platform nodejs --platform-version 18"
+            app: nodejs/monorepo-lerna-npm
+          - versionString: "--platform nodejs --platform-version 18"
+            app: nodejs/nextjs-yarn2-example
+          - versionString: "--platform nodejs --platform-version 18"
+            app: nodejs/NodeAndTypeScriptHelloWorld
+          - versionString: "--platform nodejs --platform-version 18"
+            app: nodejs/node-mssql
+          - versionString: "--platform nodejs --platform-version 18"
+            app: nodejs/node-postgres
+          - versionString: "--platform nodejs --platform-version 18"
+            app: nodejs/vuepress
+          - versionString: "--platform nodejs --platform-version 18"
+            app: nodejs/webfrontend-yarnlock
+          - versionString: "--platform nodejs --platform-version 18"
+            app: nodejs/websocket
+            
 
     steps:
       - uses: actions/checkout@v3
