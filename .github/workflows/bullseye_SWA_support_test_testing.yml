@@ -11,15 +11,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        "NetCore6BlazorWasmApp":
-          app: "DotNetCore/NetCore6BlazorWasmApp"
-          versionString: ""
-        "NetCore6PreviewMvcApp":
-          app: "DotNetCore/NetCore6PreviewMvcApp"
-          versionString: ""
-        "NetCore7PreviewMvcApp":
-          app: "DotNetCore/NetCore7PreviewMvcApp"
-          versionString: ""
+        NetCore6BlazorWasmApp:
+          app: DotNetCore/NetCore6BlazorWasmApp
+        NetCore6PreviewMvcApp:
+          app: DotNetCore/NetCore6PreviewMvcApp
+        NetCore7PreviewMvcApp:
+          app: DotNetCore/NetCore7PreviewMvcApp
 
     steps:
       - uses: actions/checkout@v3
@@ -27,4 +24,4 @@ jobs:
           repository: microsoft/Oryx
 
       - name: Build application
-        run: docker run --rm --env ORYX_SDK_STORAGE_BASE_URL="https://oryxsdksdev.blob.core.windows.net" -v $(pwd)/tests/SampleApps/$(app):/app mcr.microsoft.com/oryx/build:github-actions-bullseye oryx build /app $(versionString) --debug
+        run: docker run --rm --env ORYX_SDK_STORAGE_BASE_URL="https://oryxsdksdev.blob.core.windows.net" -v $(pwd)/tests/SampleApps/$(app):/app mcr.microsoft.com/oryx/build:github-actions-bullseye oryx build /app --debug
