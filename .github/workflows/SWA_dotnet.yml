@@ -29,4 +29,4 @@ jobs:
           repository: microsoft/Oryx
 
       - name: Build application
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:latest oryx build /app ${{ matrix.versionString }} --debug
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:20220621.1 oryx build /app ${{ matrix.versionString }} --debug
