@@ -21,6 +21,7 @@ jobs:
         versionString: 
           - "--platform python --platform-version 3.8"
           - "--platform python --platform-version 3.9"
+          - "--platform python --platform-version 3.10"
 
     steps:
       - uses: actions/checkout@v3
