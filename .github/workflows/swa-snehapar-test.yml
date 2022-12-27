@@ -79,6 +79,7 @@ jobs:
           - hugo/hugo-sample-yml
           - StaticWebAppsSamples/HugoClientDotNetCoreServer
           - StaticWebAppsSamples/ReactClientNodeServer
+          - StaticWebAppsSamples/nextjs-starter-main
 
     steps:
       - uses: actions/checkout@v3
