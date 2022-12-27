@@ -77,6 +77,8 @@ jobs:
           - hugo/hugo-sample-with-packagejson
           - hugo/hugo-sample-yaml
           - hugo/hugo-sample-yml
+          - StaticWebAppsSamples/HugoClientDotNetCoreServer
+          - StaticWebAppsSamples/ReactClientNodeServer
 
     steps:
       - uses: actions/checkout@v3
