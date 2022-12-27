@@ -106,3 +106,16 @@ jobs:
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/samples:buildpack-deps-bullseye-scm oryx build /app  
       - name: Build application - buildpack-deps-bullseye-curl
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/samples:buildpack-deps-bullseye-curl oryx build /app   
+  Deploy-preview-Vercel:
+    runs-on: ubuntu-latest
+    name: Deploy to Vercel
+    steps:   
+      - name: Install vercel CLI
+        run: npm install --global vercel@latest
+      - name: Pull Vercel Environment Information
+        run:  vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }} 
+      - name: Change directory
+      - name: Build Project Artifacts
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
