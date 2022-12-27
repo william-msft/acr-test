@@ -84,6 +84,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: microsoft/oryx
+          ref: snehapar/Install-deps-dynamically
       - name: Install Azure-cli
         uses: elstudio/action-install-azure-cli@v1
       - name: Log into registry
