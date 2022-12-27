@@ -83,7 +83,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: microsoft/Oryx/snehapar/Install-deps-dynamically
+          repository: snehapar/Install-deps-dynamically
       - name: Install Azure-cli
         uses: elstudio/action-install-azure-cli@v1
       - name: Log into registry
