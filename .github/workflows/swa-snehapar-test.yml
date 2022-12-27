@@ -74,5 +74,7 @@ jobs:
          registry: jamstacktest.azurecr.io
          username: ${{ secrets.AZURE_CLIENT_ID }}
          password: ${{ secrets.AZURE_CLIENT_SECRET }}    
-      - name: Build application
+      - name: Build application - cli-bullseye
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/cli-bullseye:latest oryx build /app
+      - name: Build application - jamstack-bullseye
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221214.1 oryx build /app
