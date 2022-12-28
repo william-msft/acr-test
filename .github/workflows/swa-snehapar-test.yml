@@ -66,7 +66,6 @@ jobs:
           - StaticWebAppsSamples/ReactClientNodeServer
           - StaticWebAppsSamples/nextjs-starter-main
           - StaticWebAppsSamples/angular-basic-main
-          - StaticWebAppsSamples/awesome-azure-static-web-apps-main
           - StaticWebAppsSamples/blazor-basic-main/Client
           - StaticWebAppsSamples/blazor-sample/Client
           - StaticWebAppsSamples/blazor-starter-main/Client
@@ -78,7 +77,7 @@ jobs:
           - StaticWebAppsSamples/nuxtjs-starter-main
           - StaticWebAppsSamples/react-basic-main
           - StaticWebAppsSamples/roles-function-main
-          - StaticWebAppsSamples/StartupAdventure-main
+          - StaticWebAppsSamples/StartupAdventurer-main
           - StaticWebAppsSamples/svelte-basic-main
           - StaticWebAppsSamples/vanilla-api-main
           - StaticWebAppsSamples/vanilla-basic-main
