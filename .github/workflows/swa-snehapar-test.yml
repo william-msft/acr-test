@@ -80,6 +80,25 @@ jobs:
           - StaticWebAppsSamples/HugoClientDotNetCoreServer
           - StaticWebAppsSamples/ReactClientNodeServer
           - StaticWebAppsSamples/nextjs-starter-main
+          - StaticWebAppsSamples/30DaysOfSWA-main
+          - StaticWebAppsSamples/angular-basic-main
+          - StaticWebAppsSamples/awesome-azure-static-web-apps-main
+          - StaticWebAppsSamples/blazor-basic-main
+          - StaticWebAppsSamples/blazor-sample
+          - StaticWebAppsSamples/blazor-starter-main
+          - StaticWebAppsSamples/mongoose-starter-main
+          - StaticWebAppsSamples/nextjs-csr-ssg-isr
+          - StaticWebAppsSamples/nextjs-starter-main
+          - StaticWebAppsSamples/next-with-static-export
+          - StaticWebAppsSamples/nuxt-3-starter-main
+          - StaticWebAppsSamples/nuxtjs-starter-main
+          - StaticWebAppsSamples/react-basic-main
+          - StaticWebAppsSamples/roles-function-main
+          - StaticWebAppsSamples/StartupAdventure-main
+          - StaticWebAppsSamples/svelte-basic-main
+          - StaticWebAppsSamples/vanilla-api-main
+          - StaticWebAppsSamples/vanilla-basic-main
+          - StaticWebAppsSamples/vue-basic-main
 
     steps:
       - uses: actions/checkout@v3
