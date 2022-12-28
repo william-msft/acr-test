@@ -23,7 +23,6 @@ jobs:
           - DotNetCore/NetCoreApp21MultiProjectApp
           - DotNetCore/NetCoreApp30.MvcApp
           - DotNetCore/aspnetcore10
-          - DotNetCore/Blazor_Function_Sample
           - DotNetCore/NetCore7PreviewMvcApp
           - DotNetCore/NetCoreApp21WebApp
           - DotNetCore/NetCoreApp30.WebApp
