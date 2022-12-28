@@ -80,7 +80,6 @@ jobs:
           - StaticWebAppsSamples/HugoClientDotNetCoreServer
           - StaticWebAppsSamples/ReactClientNodeServer
           - StaticWebAppsSamples/nextjs-starter-main
-          - StaticWebAppsSamples/30DaysOfSWA-main
           - StaticWebAppsSamples/angular-basic-main
           - StaticWebAppsSamples/awesome-azure-static-web-apps-main
           - StaticWebAppsSamples/blazor-basic-main
