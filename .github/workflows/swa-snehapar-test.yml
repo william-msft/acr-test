@@ -82,9 +82,9 @@ jobs:
           - StaticWebAppsSamples/nextjs-starter-main
           - StaticWebAppsSamples/angular-basic-main
           - StaticWebAppsSamples/awesome-azure-static-web-apps-main
-          - StaticWebAppsSamples/blazor-basic-main
-          - StaticWebAppsSamples/blazor-sample
-          - StaticWebAppsSamples/blazor-starter-main
+          - StaticWebAppsSamples/blazor-basic-main/Client
+          - StaticWebAppsSamples/blazor-sample/Client
+          - StaticWebAppsSamples/blazor-starter-main/Client
           - StaticWebAppsSamples/mongoose-starter-main
           - StaticWebAppsSamples/nextjs-csr-ssg-isr
           - StaticWebAppsSamples/nextjs-starter-main
