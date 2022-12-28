@@ -93,7 +93,7 @@ jobs:
           - StaticWebAppsSamples/nuxtjs-starter-main
           - StaticWebAppsSamples/react-basic-main
           - StaticWebAppsSamples/roles-function-main
-          - StaticWebAppsSamples/StartupAdventure-main
+          - StaticWebAppsSamples/StartupAdventure-main/src
           - StaticWebAppsSamples/svelte-basic-main
           - StaticWebAppsSamples/vanilla-api-main
           - StaticWebAppsSamples/vanilla-basic-main
