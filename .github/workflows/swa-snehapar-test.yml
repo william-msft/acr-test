@@ -99,8 +99,9 @@ jobs:
         with: 
          registry: jamstacktest.azurecr.io
          username: ${{ secrets.AZURE_CLIENT_ID }}
-         password: ${{ secrets.AZURE_CLIENT_SECRET }}    
-      - uses: actions/cache@v3
+         password: ${{ secrets.AZURE_CLIENT_SECRET }}   
+      - name: Added cache for python dependecies    
+        uses: actions/cache@v3
         if: startsWith(runner.os, 'Linux')
         with:
           path: ~/.cache/pip
