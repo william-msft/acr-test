@@ -107,9 +107,6 @@ jobs:
       - uses: docker/build-push-action@v2
         id: build
         with:
-          push: true
-          tags: ${{ steps.metadata.outputs.tags }}
-          labels: ${{ steps.metadata.outputs.labels }}
           cache-from: ${{ steps.cache.outputs.cache-from }}
           cache-to: ${{ steps.cache.outputs.cache-to }}
       - name: Build application - cli-bullseye
