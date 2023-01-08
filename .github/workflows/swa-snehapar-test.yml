@@ -113,10 +113,10 @@ jobs:
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/cli-bullseye:v2 oryx build /app
       - name: Build application - jamstack-bullseye
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221214.1 oryx build /app
-      - name: Build application - buildpack-deps-bullseye
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/samples:buildpack-deps-bullseye oryx build /app
-      - name: Build application - buildpack-deps-bullseye-scm
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/samples:buildpack-deps-bullseye-scm oryx build /app  
+      # - name: Build application - buildpack-deps-bullseye
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/samples:buildpack-deps-bullseye oryx build /app
+      # - name: Build application - buildpack-deps-bullseye-scm
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/samples:buildpack-deps-bullseye-scm oryx build /app  
       # - name: Build application - buildpack-deps-bullseye-curl
       #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/samples:buildpack-deps-bullseye-curl oryx build /app   
       - name: Pull docker image
