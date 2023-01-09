@@ -130,5 +130,5 @@ jobs:
       - name: Pull docker image
         run: docker pull jamstacktest.azurecr.io/oryx/jamstack:azfunc-jamstack-debian-bullseye  
       - name: Build application - pre-bake node + python dependecies
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Fix-php oryx build /app   
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app   
       
