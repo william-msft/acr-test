@@ -108,17 +108,18 @@ jobs:
          registry: jamstacktest.azurecr.io
          username: ${{ secrets.AZURE_CLIENT_ID }}
          password: ${{ secrets.AZURE_CLIENT_SECRET }}   
-      - uses: int128/docker-build-cache-config-action@v1
-        id: cache
-        with:
-          image: ghcr.io/${{ github.repository }}/cache
-      - uses: docker/build-push-action@v2
-        id: build
-        with:
-          cache-from: ${{ steps.cache.outputs.cache-from }}
-          cache-to: ${{ steps.cache.outputs.cache-to }}
+      # - uses: int128/docker-build-cache-config-action@v1
+      #   id: cache
+      #   with:
+      #     image: ghcr.io/${{ github.repository }}/cache
+      # - uses: docker/build-push-action@v2
+      #   id: build
+      #   with:
+      #     cache-from: ${{ steps.cache.outputs.cache-from }}
+      #     cache-to: ${{ steps.cache.outputs.cache-to }}
 
-
+      - name: Build application - pre-bake node + python dependecies
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
       - name: Build application - jamstack-bullseye-20221103.1
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1 oryx build /app
       - name: Build application - jamstack-bullseye
@@ -135,8 +136,6 @@ jobs:
       #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/samples:buildpack-deps-bullseye-curl oryx build /app   
       # - name: Pull docker image
       #   run: docker pull jamstacktest.azurecr.io/oryx/jamstack:azfunc-jamstack-debian-bullseye  
-      - name: Build application - pre-bake node + python dependecies
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
       - name: Build application - cli-bullseye
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/cli-bullseye:v2 oryx build /app    
 
