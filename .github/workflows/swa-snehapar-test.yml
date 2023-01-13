@@ -17,8 +17,8 @@ jobs:
           - azureFunctionsApps/Node_HttpTriggerSample
           - azureFunctionsApps/Python_HttpTriggerSample
           - azureFunctionsApps/TypeScript_HttpTriggerSample
-          - DotNetCore/Net5BlazorWasmClientApp
-          - DotNetCore/Net5MvcApp
+          # - DotNetCore/Net5BlazorWasmClientApp
+          # - DotNetCore/Net5MvcApp
           - DotNetCore/NetCore6BlazorWasmApp
           - DotNetCore/NetCore6PreviewMvcApp
           - DotNetCore/NetCore7PreviewMvcApp
