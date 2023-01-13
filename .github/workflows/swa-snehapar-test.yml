@@ -23,9 +23,6 @@ jobs:
           - DotNetCore/NetCore6PreviewMvcApp
           - DotNetCore/NetCore7PreviewMvcApp
           - DotNetCore/NetCore60IsolatedApp
-          - DotNetCore/NetCoreApp30.MvcApp
-          - DotNetCore/NetCoreApp31.MvcApp
-          - DotNetCore/NetCoreApp50MvcApp
           - golang/hello-world
           - hugo/hugo-sample
           - java/MavenSimpleJavaApp
@@ -121,7 +118,7 @@ jobs:
       - name: Build application - pre-bake node + python dependecies
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
       - name: Build application - pre-bake node + python dependecies
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-fix-node-failure oryx build /app  
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Fix-symlink-failures oryx build /app  
       - name: Build application - jamstack-bullseye-20221103.1
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1 oryx build /app
       - name: Build application - jamstack-bullseye
