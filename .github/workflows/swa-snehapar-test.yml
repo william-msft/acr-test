@@ -64,30 +64,30 @@ jobs:
           - hugo/hugo-sample-yml
           - StaticWebAppsSamples/HugoClientDotNetCoreServer
           - StaticWebAppsSamples/ReactClientNodeServer
-          - StaticWebAppsSamples/nextjs-starter-main
-          - StaticWebAppsSamples/angular-basic-main
-          - StaticWebAppsSamples/blazor-basic-main/Client
-          - StaticWebAppsSamples/blazor-sample/Client
-          - StaticWebAppsSamples/blazor-starter-main/Client
-          - StaticWebAppsSamples/mongoose-starter-main
-          - StaticWebAppsSamples/nextjs-csr-ssg-isr
-          - StaticWebAppsSamples/nextjs-starter-main
-          - StaticWebAppsSamples/next-with-static-export
-          - StaticWebAppsSamples/nuxt-3-starter-main
-          - StaticWebAppsSamples/nuxtjs-starter-main
-          - StaticWebAppsSamples/react-basic-main
-          - StaticWebAppsSamples/roles-function-main
-          - StaticWebAppsSamples/StartupAdventurer-main
-          - StaticWebAppsSamples/svelte-basic-main
-          - StaticWebAppsSamples/vanilla-api-main
-          - StaticWebAppsSamples/vanilla-basic-main
-          - StaticWebAppsSamples/vue-basic-main
+          # - StaticWebAppsSamples/nextjs-starter-main
+          # - StaticWebAppsSamples/angular-basic-main
+          # - StaticWebAppsSamples/blazor-basic-main/Client
+          # - StaticWebAppsSamples/blazor-sample/Client
+          # - StaticWebAppsSamples/blazor-starter-main/Client
+          # - StaticWebAppsSamples/mongoose-starter-main
+          # - StaticWebAppsSamples/nextjs-csr-ssg-isr
+          # - StaticWebAppsSamples/nextjs-starter-main
+          # - StaticWebAppsSamples/next-with-static-export
+          # - StaticWebAppsSamples/nuxt-3-starter-main
+          # - StaticWebAppsSamples/nuxtjs-starter-main
+          # - StaticWebAppsSamples/react-basic-main
+          # - StaticWebAppsSamples/roles-function-main
+          # - StaticWebAppsSamples/StartupAdventurer-main
+          # - StaticWebAppsSamples/svelte-basic-main
+          # - StaticWebAppsSamples/vanilla-api-main
+          # - StaticWebAppsSamples/vanilla-basic-main
+          # - StaticWebAppsSamples/vue-basic-main
 
     steps:
       - uses: actions/checkout@v3
         with:
           repository: microsoft/oryx
-          ref: snehapar/Install-deps-dynamically
+          ref: snehapar/Install-python-and-node-deps
       - uses: actions/cache@v3
         with:
          path: |
@@ -120,6 +120,8 @@ jobs:
 
       - name: Build application - pre-bake node + python dependecies
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
+      - name: Build application - pre-bake node + python dependecies
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-fix-node-failure oryx build /app  
       - name: Build application - jamstack-bullseye-20221103.1
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1 oryx build /app
       - name: Build application - jamstack-bullseye
