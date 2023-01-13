@@ -84,7 +84,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: microsoft/oryx
-          ref: snehapar/Install-python-and-node-deps
+          ref: snehapar/reduce-jamstack-build-time
       - uses: actions/cache@v3
         with:
          path: |
@@ -118,7 +118,7 @@ jobs:
       - name: Build application - pre-bake node + python dependecies
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
       - name: Build application - pre-bake node + python dependecies - oryx prep
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Fix-dotnetcore-syntax oryx build /app  
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-fix-symlinks-failures oryx build /app  
       - name: Build application - jamstack-bullseye-20221103.1
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1 oryx build /app
       - name: Build application - jamstack-bullseye
