@@ -117,8 +117,10 @@ jobs:
 
       - name: Build application - pre-bake node + python dependecies
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
-      - name: Build application - pre-bake node + python dependecies - oryx prep
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Fix-sytax-errors oryx build /app  
+      - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Fix-sytax-errors oryx build /app 
+      - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn + node
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Pre-bake-node oryx build /app   
       - name: Build application - jamstack-bullseye-20221103.1
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1 oryx build /app
       - name: Build application - jamstack-bullseye
