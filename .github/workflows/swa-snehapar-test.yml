@@ -137,7 +137,8 @@ jobs:
       #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/samples:buildpack-deps-bullseye-curl oryx build /app   
       # - name: Pull docker image
       #   run: docker pull jamstacktest.azurecr.io/oryx/jamstack:azfunc-jamstack-debian-bullseye  
-      - name: Build application - cli-bullseye
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/cli-bullseye:v2 oryx build /app    
+
+      # - name: Build application - cli-bullseye
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/cli-bullseye:v2 oryx build /app    
 
       
