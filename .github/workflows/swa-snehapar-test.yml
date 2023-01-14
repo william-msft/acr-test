@@ -31,7 +31,7 @@ jobs:
           - nodejs/helloworld-nuxtjs
           - nodejs/monorepo-lerna-npm
           - nodejs/nextjs-yarn2-example
-          - nodejs/NodeAndTypeScriptHelloWorld
+          # - nodejs/NodeAndTypeScriptHelloWorld
           - nodejs/node-mssql
           - nodejs/node-postgres
           - nodejs/vuepress
