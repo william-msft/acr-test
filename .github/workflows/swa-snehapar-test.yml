@@ -60,7 +60,7 @@ jobs:
           - hugo/hugo-sample-yaml
           - hugo/hugo-sample-yml
           - StaticWebAppsSamples/HugoClientDotNetCoreServer
-          - StaticWebAppsSamples/ReactClientNodeServer
+          - StaticWebAppsSamples/ReactClientNodeServer/app
           # - StaticWebAppsSamples/nextjs-starter-main
           # - StaticWebAppsSamples/angular-basic-main
           # - StaticWebAppsSamples/blazor-basic-main/Client
