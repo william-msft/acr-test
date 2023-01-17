@@ -79,6 +79,9 @@ jobs:
           - StaticWebAppsSamples/vanilla-api-main
           - StaticWebAppsSamples/vanilla-basic-main
           - StaticWebAppsSamples/vue-basic-main
+          - StaticWebAppsSamples/hugo-example.github.io-master
+          - StaticWebAppsSamples/hugoBasicsExample-master
+          - StaticWebAppsSamples/sample-hugo-main
 
     steps:
       - uses: actions/checkout@v3
