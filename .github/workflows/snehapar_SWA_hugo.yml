@@ -1,4 +1,4 @@
-name: Build Test - cli-bullseye:latest
+name: Build Test - SWA hugo
 
 on:
   workflow_dispatch:

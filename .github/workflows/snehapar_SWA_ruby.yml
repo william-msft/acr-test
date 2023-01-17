@@ -1,4 +1,4 @@
-name: Build Test - cli-bullseye:latest
+name: Build Test - SWA ruby
 
 on:
   workflow_dispatch:
