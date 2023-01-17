@@ -84,7 +84,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: microsoft/oryx
-          ref: snehapar/reduce-jamstack-build-time
+          ref: snehapar/Install-deps-dynamically
       - uses: actions/cache@v3
         with:
          path: |
