@@ -6,7 +6,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 30
 
     strategy:
       fail-fast: false
@@ -17,15 +17,12 @@ jobs:
           - azureFunctionsApps/Node_HttpTriggerSample
           - azureFunctionsApps/Python_HttpTriggerSample
           - azureFunctionsApps/TypeScript_HttpTriggerSample
-          - DotNetCore/Net5BlazorWasmClientApp
-          - DotNetCore/Net5MvcApp
+          # - DotNetCore/Net5BlazorWasmClientApp
+          # - DotNetCore/Net5MvcApp
           - DotNetCore/NetCore6BlazorWasmApp
           - DotNetCore/NetCore6PreviewMvcApp
           - DotNetCore/NetCore7PreviewMvcApp
           - DotNetCore/NetCore60IsolatedApp
-          - DotNetCore/NetCoreApp30.MvcApp
-          - DotNetCore/NetCoreApp31.MvcApp
-          - DotNetCore/NetCoreApp50MvcApp
           - golang/hello-world
           - hugo/hugo-sample
           - java/MavenSimpleJavaApp
@@ -34,7 +31,7 @@ jobs:
           - nodejs/helloworld-nuxtjs
           - nodejs/monorepo-lerna-npm
           - nodejs/nextjs-yarn2-example
-          - nodejs/NodeAndTypeScriptHelloWorld
+          # - nodejs/NodeAndTypeScriptHelloWorld
           - nodejs/node-mssql
           - nodejs/node-postgres
           - nodejs/vuepress
@@ -57,11 +54,48 @@ jobs:
           - ruby/Jekyll-app
           - ruby/ruby-on-rails-app
           - ruby/sinatra-app
+          - hugo/hugo-sample
+          - hugo/hugo-sample-json
+          - hugo/hugo-sample-with-packagejson
+          - hugo/hugo-sample-yaml
+          - hugo/hugo-sample-yml
+          - StaticWebAppsSamples/HugoClientDotNetCoreServer
+          - StaticWebAppsSamples/ReactClientNodeServer/app
+          - StaticWebAppsSamples/nextjs-starter-main
+          - StaticWebAppsSamples/angular-basic-main
+          - StaticWebAppsSamples/blazor-basic-main/Client
+          - StaticWebAppsSamples/blazor-sample/Client
+          - StaticWebAppsSamples/blazor-starter-main/Client
+          - StaticWebAppsSamples/mongoose-starter-main
+          - StaticWebAppsSamples/nextjs-csr-ssg-isr
+          - StaticWebAppsSamples/nextjs-starter-main
+          - StaticWebAppsSamples/next-with-static-export
+          - StaticWebAppsSamples/nuxt-3-starter-main
+          - StaticWebAppsSamples/nuxtjs-starter-main
+          - StaticWebAppsSamples/react-basic-main
+          - StaticWebAppsSamples/roles-function-main
+          - StaticWebAppsSamples/StartupAdventurer-main
+          - StaticWebAppsSamples/svelte-basic-main
+          - StaticWebAppsSamples/vanilla-api-main
+          - StaticWebAppsSamples/vanilla-basic-main
+          - StaticWebAppsSamples/vue-basic-main
+          - StaticWebAppsSamples/hugo-example.github.io-master
+          - StaticWebAppsSamples/hugoBasicsExample-master
+          - StaticWebAppsSamples/sample-hugo-main
 
     steps:
       - uses: actions/checkout@v3
         with:
-          repository: microsoft/Oryx
+          repository: microsoft/oryx
+          ref: snehapar/Test-SWA-for-all-platforms
+      - uses: actions/cache@v3
+        with:
+         path: |
+          .cache/go-build
+          go/pkg/mod
+         key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+         restore-keys: |
+           ${{ runner.os }}-go-    
       - name: Install Azure-cli
         uses: elstudio/action-install-azure-cli@v1
       - name: Log into registry
@@ -73,6 +107,41 @@ jobs:
         with: 
          registry: jamstacktest.azurecr.io
          username: ${{ secrets.AZURE_CLIENT_ID }}
-         password: ${{ secrets.AZURE_CLIENT_SECRET }}    
-      - name: Build application
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/cli-bullseye:latest oryx build /app
+         password: ${{ secrets.AZURE_CLIENT_SECRET }}   
+      # - uses: int128/docker-build-cache-config-action@v1
+      #   id: cache
+      #   with:
+      #     image: ghcr.io/${{ github.repository }}/cache
+      # - uses: docker/build-push-action@v2
+      #   id: build
+      #   with:
+      #     cache-from: ${{ steps.cache.outputs.cache-from }}
+      #     cache-to: ${{ steps.cache.outputs.cache-to }}
+
+      - name: Build application - pre-bake node + python dependecies
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
+      - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Fix-sytax-errors oryx build /app 
+      - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn + node
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Pre-bake-node oryx build /app   
+      - name: Build application - jamstack-bullseye-20221103.1
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1 oryx build /app
+      - name: Build application - jamstack-bullseye
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221214.1 oryx build /app    
+      # - name: Build application - cli-bullseye
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/cli-bullseye:v2 oryx build /app
+      # - name: Build application - jamstack-bullseye
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221214.1 oryx build /app
+      # - name: Build application - buildpack-deps-bullseye
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/samples:buildpack-deps-bullseye oryx build /app
+      # - name: Build application - buildpack-deps-bullseye-scm
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/samples:buildpack-deps-bullseye-scm oryx build /app  
+      # - name: Build application - buildpack-deps-bullseye-curl
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/samples:buildpack-deps-bullseye-curl oryx build /app   
+      # - name: Pull docker image
+      #   run: docker pull jamstacktest.azurecr.io/oryx/jamstack:azfunc-jamstack-debian-bullseye  
+
+      # - name: Build application - cli-bullseye
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/cli-bullseye:v2 oryx build /app    
+
+      
