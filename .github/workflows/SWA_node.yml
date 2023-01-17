@@ -43,4 +43,4 @@ jobs:
           repository: microsoft/Oryx
 
       - name: Build application
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:github-actions-bullseye oryx build /app ${{ matrix.versionString }} --debug
+        run: docker run --rm --no-cache -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:github-actions-bullseye oryx build /app ${{ matrix.versionString }} --debug
