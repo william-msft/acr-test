@@ -3,7 +3,9 @@ name: Build Test - cli-bullseye:latest
 on:
   workflow_dispatch:
 
-strategy:
+jobs:
+  test:
+    strategy:
       fail-fast: false
       matrix:
         app:
@@ -78,9 +80,6 @@ strategy:
           - StaticWebAppsSamples/hugoBasicsExample-master
           - StaticWebAppsSamples/sample-hugo-main
           - StaticWebAppsSamples/vue-basic-main  
-
-jobs:
-  test:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -149,6 +148,81 @@ jobs:
       #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/cli-bullseye:v2 oryx build /app    
   
   job2:
+    strategy:
+      fail-fast: false
+      matrix:
+        app:
+          - azureFunctionsApps/DotNetCore_HttpTriggerV3Sample
+          - azureFunctionsApps/DotNetCore_HttpTriggerV4Sample
+          - azureFunctionsApps/Node_HttpTriggerSample
+          - azureFunctionsApps/Python_HttpTriggerSample
+          - azureFunctionsApps/TypeScript_HttpTriggerSample
+          # - DotNetCore/Net5BlazorWasmClientApp
+          # - DotNetCore/Net5MvcApp
+          - DotNetCore/NetCore6BlazorWasmApp
+          - DotNetCore/NetCore6PreviewMvcApp
+          - DotNetCore/NetCore7PreviewMvcApp
+          - DotNetCore/NetCore60IsolatedApp
+          - golang/hello-world
+          - hugo/hugo-sample
+          - java/MavenSimpleJavaApp
+          - nodejs/angular14app
+          - nodejs/create-react-app-sample
+          - nodejs/helloworld-nuxtjs
+          - nodejs/monorepo-lerna-npm
+          - nodejs/nextjs-yarn2-example
+          # - nodejs/NodeAndTypeScriptHelloWorld
+          - nodejs/node-mssql
+          - nodejs/node-postgres
+          - nodejs/vuepress
+          - nodejs/webfrontend-yarnlock
+          - nodejs/websocket
+          - php/exif-example
+          - php/gd-example
+          - php/mysqli-example
+          - php/pgsql-example
+          - php/sqlsrv-example
+          - php/twig-example
+          - php/wordpress-example
+          - php/php-fpm-config
+          - python/django-app
+          - python/flask-app
+          - python/http-server-py
+          - python/mssqlserver-sample
+          - python/postgres-sample
+          - python/shapely-flask-app
+          - ruby/Jekyll-app
+          - ruby/ruby-on-rails-app
+          - ruby/sinatra-app
+          - hugo/hugo-sample
+          - hugo/hugo-sample-json
+          - hugo/hugo-sample-with-packagejson
+          - hugo/hugo-sample-yaml
+          - hugo/hugo-sample-yml
+          - StaticWebAppsSamples/HugoClientDotNetCoreServer
+          - StaticWebAppsSamples/ReactClientNodeServer/app
+          - StaticWebAppsSamples/nextjs-starter-main
+          - StaticWebAppsSamples/angular-basic-main
+          - StaticWebAppsSamples/blazor-basic-main/Client
+          - StaticWebAppsSamples/blazor-sample/Client
+          - StaticWebAppsSamples/blazor-starter-main/Client
+          - StaticWebAppsSamples/mongoose-starter-main
+          - StaticWebAppsSamples/nextjs-csr-ssg-isr
+          - StaticWebAppsSamples/nextjs-starter-main
+          - StaticWebAppsSamples/next-with-static-export
+          - StaticWebAppsSamples/nuxt-3-starter-main
+          - StaticWebAppsSamples/nuxtjs-starter-main
+          - StaticWebAppsSamples/react-basic-main
+          - StaticWebAppsSamples/roles-function-main
+          - StaticWebAppsSamples/StartupAdventurer-main
+          - StaticWebAppsSamples/svelte-basic-main
+          - StaticWebAppsSamples/vanilla-api-main
+          - StaticWebAppsSamples/vanilla-basic-main
+          - StaticWebAppsSamples/vue-basic-main
+          - StaticWebAppsSamples/hugo-example.github.io-master
+          - StaticWebAppsSamples/hugoBasicsExample-master
+          - StaticWebAppsSamples/sample-hugo-main
+          - StaticWebAppsSamples/vue-basic-main  
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
