@@ -1,4 +1,4 @@
-name: Build Test - cli-bullseye:Test-ACR
+name: Build Test - SWA-apps:Test-ACR
 
 on:
   workflow_dispatch:
@@ -9,53 +9,6 @@ jobs:
       fail-fast: false
       matrix:
         app:
-          - azureFunctionsApps/DotNetCore_HttpTriggerV3Sample
-          - azureFunctionsApps/DotNetCore_HttpTriggerV4Sample
-          - azureFunctionsApps/Node_HttpTriggerSample
-          - azureFunctionsApps/Python_HttpTriggerSample
-          - azureFunctionsApps/TypeScript_HttpTriggerSample
-          # - DotNetCore/Net5BlazorWasmClientApp
-          # - DotNetCore/Net5MvcApp
-          - DotNetCore/NetCore6BlazorWasmApp
-          - DotNetCore/NetCore6PreviewMvcApp
-          - DotNetCore/NetCore7PreviewMvcApp
-          - DotNetCore/NetCore60IsolatedApp
-          - golang/hello-world
-          - hugo/hugo-sample
-          - java/MavenSimpleJavaApp
-          - nodejs/angular14app
-          - nodejs/create-react-app-sample
-          - nodejs/helloworld-nuxtjs
-          - nodejs/monorepo-lerna-npm
-          - nodejs/nextjs-yarn2-example
-          # - nodejs/NodeAndTypeScriptHelloWorld
-          - nodejs/node-mssql
-          - nodejs/node-postgres
-          - nodejs/vuepress
-          - nodejs/webfrontend-yarnlock
-          - nodejs/websocket
-          - php/exif-example
-          - php/gd-example
-          - php/mysqli-example
-          - php/pgsql-example
-          - php/sqlsrv-example
-          - php/twig-example
-          - php/wordpress-example
-          - php/php-fpm-config
-          - python/django-app
-          - python/flask-app
-          - python/http-server-py
-          - python/mssqlserver-sample
-          - python/postgres-sample
-          - python/shapely-flask-app
-          - ruby/Jekyll-app
-          - ruby/ruby-on-rails-app
-          - ruby/sinatra-app
-          - hugo/hugo-sample
-          - hugo/hugo-sample-json
-          - hugo/hugo-sample-with-packagejson
-          - hugo/hugo-sample-yaml
-          - hugo/hugo-sample-yml
           - StaticWebAppsSamples/HugoClientDotNetCoreServer
           - StaticWebAppsSamples/ReactClientNodeServer/app
           - StaticWebAppsSamples/nextjs-starter-main
@@ -123,7 +76,7 @@ jobs:
       #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
       # - name: Pull jamstack image from private ACR
       #   run: docker pull jamstacktest.azurecr.io/oryx/build:Pre-bake-node
-       - name: Build application - jamstack-bullseye-20221103.1
+      - name: Build application - jamstack-bullseye-20221103.1
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1 oryx build /app ${{ matrix.versionString }} --debug 
       # - name: Pull jamstack image from MCR
       #   run : docker pull mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1
