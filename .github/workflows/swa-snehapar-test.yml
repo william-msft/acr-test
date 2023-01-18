@@ -5,9 +5,6 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-
     strategy:
       fail-fast: false
       matrix:
@@ -82,7 +79,9 @@ jobs:
           - StaticWebAppsSamples/hugo-example.github.io-master
           - StaticWebAppsSamples/hugoBasicsExample-master
           - StaticWebAppsSamples/sample-hugo-main
-
+          - StaticWebAppsSamples/vue-basic-main  
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v3
         with:
@@ -130,6 +129,13 @@ jobs:
         run : docker pull mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1
       - name: Build application - jamstack-bullseye-20221103.1
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1 oryx build /app
+      #   run: docker run --rm --no-cache -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
+      # - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn
+      #   run: docker run --rm --no-cache -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Fix-sytax-errors oryx build /app 
+      # - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn + node
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Pre-bake-node oryx build /app   
+      # - name: Build application - jamstack-bullseye-20221103.1
+      #   run: docker run --rm --no-cache -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1 oryx build /app
       # - name: Build application - jamstack-bullseye
       #   run: docker run --rm --no-cache -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221214.1 oryx build /app    
       # - name: Build application - cli-bullseye
@@ -147,5 +153,7 @@ jobs:
 
       # - name: Build application - cli-bullseye
       #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/cli-bullseye:v2 oryx build /app    
-
-      
+      # - name: Build application - pre-bake node + python dependecies
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
+      # - name: Build application - cli-bullseye
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/cli-bullseye:v2 oryx build /app    
