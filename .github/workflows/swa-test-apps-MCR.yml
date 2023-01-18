@@ -1,4 +1,4 @@
-name: Build Test - SWA-apps:Test-MCR
+name: Build Test -  SWA-apps:Test-MCR
 
 on:
   workflow_dispatch:
