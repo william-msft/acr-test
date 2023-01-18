@@ -1,4 +1,4 @@
-name: Build Test - cli-bullseye:Test-MCR-image
+name: Build Test - cli-bullseye:Test-ACR
 
 on:
   workflow_dispatch:
