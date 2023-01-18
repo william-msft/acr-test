@@ -1,4 +1,4 @@
-name: Build Test - SWA hugo
+name: Build Test - SWA php - MCR
 
 on:
   workflow_dispatch:
@@ -12,11 +12,14 @@ jobs:
       fail-fast: false
       matrix:      
         app:
-          - hugo/hugo-sample
-          - hugo/hugo-sample-json
-          - hugo/hugo-sample-with-packagejson
-          - hugo/hugo-sample-yaml
-          - hugo/hugo-sample-yml
+          - php/exif-example
+          - php/gd-example
+          - php/mysqli-example
+          - php/pgsql-example
+          - php/sqlsrv-example
+          - php/twig-example
+          - php/wordpress-example
+          - php/php-fpm-config
         versionString: 
           - ""
 
@@ -59,8 +62,8 @@ jobs:
       #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
       # - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn
       #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Fix-sytax-errors oryx build /app 
-      - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn + node
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Pre-bake-node oryx build /app ${{ matrix.versionString }} --debug   
+      # - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn + node
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Pre-bake-node oryx build /app ${{ matrix.versionString }} --debug   
       - name: Build application - jamstack-bullseye-20221103.1
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1 oryx build /app ${{ matrix.versionString }} --debug
       # - name: Build application - jamstack-bullseye

@@ -1,4 +1,4 @@
-name: Build Test - SWA python
+name: Build Test - SWA node - MCR
 
 on:
   workflow_dispatch:
@@ -12,16 +12,29 @@ jobs:
       fail-fast: false
       matrix:      
         app:
-          - python/django-app
-          - python/flask-app
-          - python/http-server-py
-          - python/mssqlserver-sample
-          - python/postgres-sample
-          - python/shapely-flask-app
+          - nodejs/angular14app
+          - nodejs/create-react-app-sample
+          - nodejs/helloworld-nuxtjs
+          - nodejs/monorepo-lerna-npm
+          - nodejs/nextjs-yarn2-example
+          # - nodejs/NodeAndTypeScriptHelloWorld
+          - nodejs/node-mssql
+          - nodejs/node-postgres
+          - nodejs/vuepress
+          - nodejs/webfrontend-yarnlock
+          - nodejs/websocket
         versionString: 
-          - "--platform python --platform-version 3.8"
-          - "--platform python --platform-version 3.9"
-          - "--platform python --platform-version 3.10"
+          - "--platform nodejs --platform-version 12"
+          - "--platform nodejs --platform-version 14"
+          - "--platform nodejs --platform-version 16"
+          - "--platform nodejs --platform-version 18"
+        exclude:
+          - app: nodejs/angular14app
+            versionString: "--platform nodejs --platform-version 12"
+          - app: nodejs/angular14app
+            versionString: "--platform nodejs --platform-version 16"
+          - app: nodejs/NodeAndTypeScriptHelloWorld
+            versionString: "--platform nodejs --platform-version 16"
 
     steps:
       - uses: actions/checkout@v3
@@ -62,8 +75,8 @@ jobs:
       #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
       # - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn
       #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Fix-sytax-errors oryx build /app 
-      - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn + node
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Pre-bake-node oryx build /app ${{ matrix.versionString }} --debug   
+      # - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn + node
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Pre-bake-node oryx build /app ${{ matrix.versionString }} --debug   
       - name: Build application - jamstack-bullseye-20221103.1
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1 oryx build /app ${{ matrix.versionString }} --debug
       # - name: Build application - jamstack-bullseye
