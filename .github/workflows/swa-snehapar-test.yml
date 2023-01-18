@@ -121,12 +121,12 @@ jobs:
       #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
       # - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn
       #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:Fix-sytax-errors oryx build /app 
-      - name: Pull jamstack image from private ACR
-        run: docker pull jamstacktest.azurecr.io/oryx/build:Pre-bake-node
+      # - name: Pull jamstack image from private ACR
+      #   run: docker pull jamstacktest.azurecr.io/oryx/build:Pre-bake-node
       - name: Build application - pre-bake node + python dependecies - pre-bake python + yarn + node
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-prebake-node16 oryx build /app  
-      - name: Pull jamstack image from MCR
-        run : docker pull mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1
+      # - name: Pull jamstack image from MCR
+      #   run : docker pull mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1
       - name: Build application - jamstack-bullseye-20221103.1
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1 oryx build /app
       #   run: docker run --rm --no-cache -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
