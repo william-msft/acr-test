@@ -18,6 +18,28 @@ jobs:
           - python/mssqlserver-sample
           - python/postgres-sample
           - python/shapely-flask-app
+          - python/Flask-React-Postgres
+          - python/flask-setup-py-requirement-txt
+          - python/microblog
+          - python/mysql-mysqlconnector-sample
+          - python/python2-flask-app
+          - python/stackoverflow-flask
+          - python/React-Redux-Flask-app
+          - python/django-react-boilerplate
+          - python/flask-chatterbot
+          - python/flask-chatterbot
+          - python/geo-django-app
+          - python/mysql-pymysql-sample
+          - python/python2-rest-framework-app
+          - python/tweeter3
+          - python/conda-samples
+          - python/django-realworld-example-app
+          - python/flask-setup-py-app
+          - python/http-server-app
+          - python/mysql-mysqlclient-sample
+          - python/postgres-sample
+          - python/shapely-flask-app
+          
         versionString: 
           - "--platform python --platform-version 3.8"
           - "--platform python --platform-version 3.9"

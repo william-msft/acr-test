@@ -23,6 +23,35 @@ jobs:
           - nodejs/vuepress
           - nodejs/webfrontend-yarnlock
           - nodejs/websocket
+          - nodejs/NodeAndTypeScriptHelloWorld
+          - nodejs/blog-starter-nextjs
+          - nodejs/express-process-json
+          - nodejs/hexo-sample
+          - nodejs/monorepo-lerna-npm
+          - nodejs/node-mssql
+          - nodejs/node-sass-example
+          - nodejs/webfrontend
+          - nodejs/gatsbyexample
+          - nodejs/lab2-appservice
+          - nodejs/monorepo-lerna-yarn
+          - nodejs/node-mysql
+          - nodejs/soundcloud-ngrx
+          - nodejs/webfrontend-yarnlock
+          - nodejs/app-with-no-dependencies
+          - nodejs/express-config-js
+          - nodejs/hackernews-nuxtjs
+          - nodejs/linxnodeexpress
+          - nodejs/nextjs-yarn2-example
+          - nodejs/node-nested-nodemodules
+          - nodejs/vue-sample
+          - nodejs/websocket
+          - nodejs/azure-pages-sample
+          - nodejs/express-config-yaml
+          - nodejs/helloworld-nextjs
+          - nodejs/linxnodeexpress-appinsights
+          - nodejs/node-makefile-sample
+          - nodejs/node-postgres
+          - nodejs/vuepress
         versionString: 
           - "--platform nodejs --platform-version 12"
           - "--platform nodejs --platform-version 14"
