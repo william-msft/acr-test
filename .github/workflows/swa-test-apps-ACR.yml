@@ -77,7 +77,7 @@ jobs:
       # - name: Pull jamstack image from private ACR
       #   run: docker pull jamstacktest.azurecr.io/oryx/build:Pre-bake-node
       - name: Oryx build step
-        uses: snehapar9/jamstack-composite-action/.github/workflows/composite-action.yml@snehapar/oryx-build
+        uses: snehapar9/jamstack-composite-action@snehapar/oryx-build
         id: oryx-build
         with:
           app-location: $(pwd)/tests/SampleApps/${{ matrix.app }} 
