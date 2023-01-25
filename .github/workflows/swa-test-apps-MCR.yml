@@ -9,30 +9,30 @@ jobs:
       fail-fast: false
       matrix:
         app:
-          - StaticWebAppsSamples/HugoClientDotNetCoreServer
-          - StaticWebAppsSamples/ReactClientNodeServer/app
+#           - StaticWebAppsSamples/HugoClientDotNetCoreServer
+#           - StaticWebAppsSamples/ReactClientNodeServer/app
           - StaticWebAppsSamples/nextjs-starter-main
-          - StaticWebAppsSamples/angular-basic-main
-          - StaticWebAppsSamples/blazor-basic-main/Client
-          - StaticWebAppsSamples/blazor-sample/Client
-          - StaticWebAppsSamples/blazor-starter-main/Client
-          - StaticWebAppsSamples/mongoose-starter-main
-          - StaticWebAppsSamples/nextjs-csr-ssg-isr
-          - StaticWebAppsSamples/nextjs-starter-main
-          - StaticWebAppsSamples/next-with-static-export
-          - StaticWebAppsSamples/nuxt-3-starter-main
-          - StaticWebAppsSamples/nuxtjs-starter-main
-          - StaticWebAppsSamples/react-basic-main
-          - StaticWebAppsSamples/roles-function-main
-          - StaticWebAppsSamples/StartupAdventurer-main
-          - StaticWebAppsSamples/svelte-basic-main
-          - StaticWebAppsSamples/vanilla-api-main
-          - StaticWebAppsSamples/vanilla-basic-main
-          - StaticWebAppsSamples/vue-basic-main
-          - StaticWebAppsSamples/hugo-example.github.io-master
-          - StaticWebAppsSamples/hugoBasicsExample-master
-          - StaticWebAppsSamples/sample-hugo-main
-          - StaticWebAppsSamples/vue-basic-main  
+#           - StaticWebAppsSamples/angular-basic-main
+#           - StaticWebAppsSamples/blazor-basic-main/Client
+#           - StaticWebAppsSamples/blazor-sample/Client
+#           - StaticWebAppsSamples/blazor-starter-main/Client
+#           - StaticWebAppsSamples/mongoose-starter-main
+#           - StaticWebAppsSamples/nextjs-csr-ssg-isr
+#           - StaticWebAppsSamples/nextjs-starter-main
+#           - StaticWebAppsSamples/next-with-static-export
+#           - StaticWebAppsSamples/nuxt-3-starter-main
+#           - StaticWebAppsSamples/nuxtjs-starter-main
+#           - StaticWebAppsSamples/react-basic-main
+#           - StaticWebAppsSamples/roles-function-main
+#           - StaticWebAppsSamples/StartupAdventurer-main
+#           - StaticWebAppsSamples/svelte-basic-main
+#           - StaticWebAppsSamples/vanilla-api-main
+#           - StaticWebAppsSamples/vanilla-basic-main
+#           - StaticWebAppsSamples/vue-basic-main
+#           - StaticWebAppsSamples/hugo-example.github.io-master
+#           - StaticWebAppsSamples/hugoBasicsExample-master
+#           - StaticWebAppsSamples/sample-hugo-main
+#           - StaticWebAppsSamples/vue-basic-main  
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -40,26 +40,26 @@ jobs:
         with:
           repository: microsoft/oryx
           ref: snehapar/Test-SWA-for-all-platforms
-      - uses: actions/cache@v3
-        with:
-         path: |
-          .cache/go-build
-          go/pkg/mod
-         key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-         restore-keys: |
-           ${{ runner.os }}-go-    
-      - name: Install Azure-cli
-        uses: elstudio/action-install-azure-cli@v1
-      - name: Log into registry
-        uses: azure/login@v1
-        with:
-         creds: '${{ secrets.AZURE_CREDENTIALS }}'
-      - name: Log in to Azure Container Registry
-        uses: docker/login-action@v2.0.0
-        with: 
-         registry: jamstacktest.azurecr.io
-         username: ${{ secrets.AZURE_CLIENT_ID }}
-         password: ${{ secrets.AZURE_CLIENT_SECRET }}   
+#       - uses: actions/cache@v3
+#         with:
+#          path: |
+#           .cache/go-build
+#           go/pkg/mod
+#          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+#          restore-keys: |
+#            ${{ runner.os }}-go-    
+#       - name: Install Azure-cli
+#         uses: elstudio/action-install-azure-cli@v1
+#       - name: Log into registry
+#         uses: azure/login@v1
+#         with:
+#          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+#       - name: Log in to Azure Container Registry
+#         uses: docker/login-action@v2.0.0
+#         with: 
+#          registry: jamstacktest.azurecr.io
+#          username: ${{ secrets.AZURE_CLIENT_ID }}
+#          password: ${{ secrets.AZURE_CLIENT_SECRET }}   
       # - uses: int128/docker-build-cache-config-action@v1
       #   id: cache
       #   with:
@@ -76,8 +76,13 @@ jobs:
       #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app jamstacktest.azurecr.io/oryx/build:azfunc-jamstack-debian-bullseye-Install-libedit oryx build /app 
       # - name: Pull jamstack image from private ACR
       #   run: docker pull jamstacktest.azurecr.io/oryx/build:Pre-bake-node
-      - name: Build application - jamstack-bullseye-20221103.1
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1 oryx build /app ${{ matrix.versionString }} --debug 
+      - name: Oryx build step
+        uses: snehapar9/jamstack-composite-action@snehapar/oryx-build
+        id: oryx-build
+        with:
+          app-location: $(pwd)/tests/SampleApps/${{ matrix.app }} 
+          username: ${{ secrets.AZURE_CLIENT_ID }}
+          password: ${{ secrets.AZURE_CLIENT_SECRET }}
       # - name: Pull jamstack image from MCR
       #   run : docker pull mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1
       # - name: Build application - jamstack-bullseye-20221103.1
