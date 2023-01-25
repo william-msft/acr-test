@@ -20,6 +20,8 @@ jobs:
           - php/twig-example
           - php/wordpress-example
           - php/php-fpm-config
+          - php/greetings
+          - php/imagick-example
         versionString: 
           - ""
 

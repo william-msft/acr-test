@@ -20,6 +20,41 @@ jobs:
           - DotNetCore/NetCore60IsolatedApp
           - DotNetCore/NetCoreApp31.MvcApp
           - StaticWebAppsSamples/HugoClientDotNetCoreServer
+          - DotNetCore/Net5BlazorWasmClientApp
+          - DotNetCore/AzureFunctionsHttpTriggerApp
+          - DotNetCore/NetCoreApp21MultiProjectApp
+          - DotNetCore/NetCoreApp30.MvcApp
+          - DotNetCore/aspnetcore10
+          - DotNetCore/aspnetcore20
+          - DotNetCore/Blazor_Function_Sample
+          - DotNetCore/Net5MvcApp
+          - DotNetCore/NetCoreApp21WebApp
+          - DotNetCore/NetCoreApp30.WebApp
+          - DotNetCore/aspnetcore20
+          - DotNetCore/DefaultWebApp
+          - DotNetCore/NetCore60IsolatedApp
+          - DotNetCore/NetCoreApp11MultiProjectApp
+          - DotNetCore/NetCoreApp21WithExlicitAssemblyName
+          - DotNetCore/NetCoreApp30WebAppWithExplicitAssemblyName
+          - DotNetCore/FSharpNetCoreApp30.WebApp
+          - DotNetCore/NetCore6BlazorWasmApp
+          - DotNetCore/NetCoreApp11WebApp
+          - DotNetCore/NetCoreApp22MultiProjectApp
+          - DotNetCore/NetCoreApp31.MvcApp
+          - DotNetCore/ImageResizingWebApp
+          - DotNetCore/NetCore6PreviewConsoleApp
+          - DotNetCore/NetCoreapp11WithExplicitAssemblyName
+          - DotNetCore/NetCoreApp22WebApp
+          - DotNetCore/NetCoreApp50MvcApp
+          - DotNetCore/MultiWebAppRepo
+          - DotNetCore/NetCore6PreviewMvcApp
+          - DotNetCore/NetCoreApp21.WebApp
+          - DotNetCore/NetCore6PreviewConsoleApp
+          - DotNetCore/NetCoreApp22WithExplicitAssemblyName
+          - DotNetCore/NetCoreApp22WebApp
+          - DotNetCore/NetCoreApp50MvcApp
+          
+
         versionString: 
           - ""
 
