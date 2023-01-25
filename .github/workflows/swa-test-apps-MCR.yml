@@ -12,8 +12,8 @@ jobs:
 #           - StaticWebAppsSamples/HugoClientDotNetCoreServer
 #           - StaticWebAppsSamples/ReactClientNodeServer/app
 #           - StaticWebAppsSamples/nextjs-starter-main
-          - StaticWebAppsSamples/angular-basic-main
-#           - StaticWebAppsSamples/blazor-basic-main/Client
+#           - StaticWebAppsSamples/angular-basic-main
+          - StaticWebAppsSamples/blazor-basic-main/Client
 #           - StaticWebAppsSamples/blazor-sample/Client
 #           - StaticWebAppsSamples/blazor-starter-main/Client
 #           - StaticWebAppsSamples/mongoose-starter-main
