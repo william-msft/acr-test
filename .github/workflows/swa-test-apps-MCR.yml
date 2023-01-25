@@ -80,9 +80,7 @@ jobs:
         uses: snehapar9/jamstack-composite-action@snehapar/oryx-build
         id: oryx-build
         with:
-          app-location: $(pwd)/tests/SampleApps/${{ matrix.app }} 
-          username: ${{ secrets.AZURE_CLIENT_ID }}
-          password: ${{ secrets.AZURE_CLIENT_SECRET }} 
+          app-location: ./tests/SampleApps/${{ matrix.app }} 
       # - name: Pull jamstack image from MCR
       #   run : docker pull mcr.microsoft.com/oryx/build:azfunc-jamstack-debian-bullseye-20221103.1
       # - name: Build application - jamstack-bullseye-20221103.1
