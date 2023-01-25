@@ -13,12 +13,12 @@ jobs:
 #           - StaticWebAppsSamples/ReactClientNodeServer/app
 #           - StaticWebAppsSamples/nextjs-starter-main
 #           - StaticWebAppsSamples/angular-basic-main
-          - StaticWebAppsSamples/blazor-basic-main/Client
+#           - StaticWebAppsSamples/blazor-basic-main/Client
 #           - StaticWebAppsSamples/blazor-sample/Client
 #           - StaticWebAppsSamples/blazor-starter-main/Client
 #           - StaticWebAppsSamples/mongoose-starter-main
 #           - StaticWebAppsSamples/nextjs-csr-ssg-isr
-#           - StaticWebAppsSamples/nextjs-starter-main
+          - StaticWebAppsSamples/nextjs-starter-main
 #           - StaticWebAppsSamples/next-with-static-export
 #           - StaticWebAppsSamples/nuxt-3-starter-main
 #           - StaticWebAppsSamples/nuxtjs-starter-main
