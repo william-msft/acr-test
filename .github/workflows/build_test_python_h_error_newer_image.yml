@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test:
+  regex:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
