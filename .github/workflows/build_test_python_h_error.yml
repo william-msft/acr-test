@@ -3,7 +3,7 @@ name: python.h error tests
 on:
   push:
     branches:
-      - 'main'
+      - 'main'  
   workflow_dispatch:
 
 jobs:
@@ -42,3 +42,13 @@ jobs:
 
       - name: Build application - ${{ matrix.app }} - ${{ matrix.version }} - ${{ matrix.buildImage }}
         run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app ${{ matrix.buildImage }} oryx build /app --platform python --platform-version ${{ matrix.version }} --property ${{ matrix.storageAccount }} --debug
+
+      - uses: actions/checkout@v3
+        with:
+          repository: microsoft/Oryx
+          ref: williamhe/test-additional-requirementstxt
+
+      - name: Build application - ${{ matrix.app }} - ${{ matrix.version }} - ${{ matrix.buildImage }}
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app ${{ matrix.buildImage }} oryx build /app --platform python --platform-version ${{ matrix.version }} --property ${{ matrix.storageAccount }} --debug
+
+
