@@ -24,7 +24,7 @@ jobs:
           - 3.10.8
           - 3.10.9
           - 3.11.1
-        buildImage:git 
+        buildImage:
           - mcr.microsoft.com/oryx/build:github-actions-debian-buster-20230111.1
           - mcr.microsoft.com/oryx/build:github-actions-debian-buster-20230124.1
         storageAccount:
