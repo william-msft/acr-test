@@ -1,4 +1,4 @@
-name: github-actions-bullseye dev storage account
+name: python.h error tests
 
 on:
   workflow_dispatch:
