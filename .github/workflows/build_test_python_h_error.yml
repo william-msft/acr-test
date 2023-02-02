@@ -1,0 +1,39 @@
+name: github-actions-bullseye dev storage account
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    strategy:
+      fail-fast: false
+      matrix:
+        app:
+          - python/django--regex-example-app
+        version: 
+          - 3.7.15
+          - 3.7.16
+          - 3.8.15
+          - 3.8.16
+          - 3.9.15
+          - 3.9.16
+          - 3.10.4
+          - 3.10.8
+          - 3.10.9
+          - 3.11.1
+        buildImage:
+          - mcr.microsoft.com/oryx/build:github-actions-debian-buster-20230111.1
+          - mcr.microsoft.com/oryx/build:github-actions-debian-buster-20230124.1
+        storageAccount:
+          - ORYX_SDK_STORAGE_BASE_URL=https://oryxsdkssandbox.blob.core.windows.net
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: microsoft/Oryx
+
+      - name: Build application - ${{ matrix.app }} - ${{ matrix.version }} - ${{ matrix.buildImage }}
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app ${{ matrix.buildImage }} oryx build /app --platform python --platform-version ${{ matrix.version }} --property ${{ matrix.storageAccount }} --debug
