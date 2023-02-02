@@ -27,6 +27,8 @@ jobs:
         buildImage:
           - mcr.microsoft.com/oryx/build:github-actions-debian-buster-20230111.1
           - mcr.microsoft.com/oryx/build:github-actions-debian-buster-20230124.1
+          - mcr.microsoft.com/oryx/build:github-actions-debian-bullseye-20230124.1
+          - mcr.microsoft.com/oryx/build:github-actions-debian-bullseye-20230124.1
         storageAccount:
           - "ORYX_SDK_STORAGE_BASE_URL=https://oryxsdkssandbox.blob.core.windows.net"
 
