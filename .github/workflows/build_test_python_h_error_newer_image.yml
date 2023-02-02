@@ -1,4 +1,4 @@
-name: python.h error tests
+name: python.h error newer image
 
 on:
   push:
@@ -28,20 +28,18 @@ jobs:
           - 3.10.9
           - 3.11.1
         buildImage:
-          - mcr.microsoft.com/oryx/build:github-actions-debian-buster-20230111.1
           - mcr.microsoft.com/oryx/build:github-actions-debian-buster-20230124.1
-          - mcr.microsoft.com/oryx/build:github-actions-debian-bullseye-20230124.1
           - mcr.microsoft.com/oryx/build:github-actions-debian-bullseye-20230124.1
         storageAccount:
           - "ORYX_SDK_STORAGE_BASE_URL=https://oryxsdkssandbox.blob.core.windows.net"
 
     steps:
-      # - uses: actions/checkout@v3
-      #   with:
-      #     repository: microsoft/Oryx
+      - uses: actions/checkout@v3
+        with:
+          repository: microsoft/Oryx
 
-      # - name: Build application - ${{ matrix.app }} - ${{ matrix.version }} - ${{ matrix.buildImage }}
-      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app ${{ matrix.buildImage }} oryx build /app --platform python --platform-version ${{ matrix.version }} --property ${{ matrix.storageAccount }} --debug
+      - name: Build application - ${{ matrix.app }} - ${{ matrix.version }} - ${{ matrix.buildImage }}
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app ${{ matrix.buildImage }} oryx build /app --platform python --platform-version ${{ matrix.version }} --property ${{ matrix.storageAccount }} --debug
 
       - uses: actions/checkout@v3
         with:
