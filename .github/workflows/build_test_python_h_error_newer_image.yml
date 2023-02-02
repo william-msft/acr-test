@@ -39,7 +39,7 @@ jobs:
           repository: microsoft/Oryx
 
       - name: Build application - ${{ matrix.app }} - ${{ matrix.version }} - ${{ matrix.buildImage }}
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app ${{ matrix.buildImage }} oryx build /app --platform python --platform-version ${{ matrix.version }} --property ${{ matrix.storageAccount }} --debug
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app ${{ matrix.buildImage }} oryx build /app --platform python --platform-version ${{ matrix.version }} --property ${{ matrix.storageAccount }}
 
       - uses: actions/checkout@v3
         with:
@@ -47,6 +47,6 @@ jobs:
           ref: williamhe/test-additional-requirementstxt
 
       - name: Build application - ${{ matrix.app }} - ${{ matrix.version }} - ${{ matrix.buildImage }}
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app ${{ matrix.buildImage }} oryx build /app --platform python --platform-version ${{ matrix.version }} --property ${{ matrix.storageAccount }} --debug
+        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app ${{ matrix.buildImage }} oryx build /app --platform python --platform-version ${{ matrix.version }} --property ${{ matrix.storageAccount }}
 
 
