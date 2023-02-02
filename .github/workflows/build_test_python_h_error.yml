@@ -36,12 +36,12 @@ jobs:
           - "ORYX_SDK_STORAGE_BASE_URL=https://oryxsdkssandbox.blob.core.windows.net"
 
     steps:
-      - uses: actions/checkout@v3
-        with:
-          repository: microsoft/Oryx
+      # - uses: actions/checkout@v3
+      #   with:
+      #     repository: microsoft/Oryx
 
-      - name: Build application - ${{ matrix.app }} - ${{ matrix.version }} - ${{ matrix.buildImage }}
-        run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app ${{ matrix.buildImage }} oryx build /app --platform python --platform-version ${{ matrix.version }} --property ${{ matrix.storageAccount }} --debug
+      # - name: Build application - ${{ matrix.app }} - ${{ matrix.version }} - ${{ matrix.buildImage }}
+      #   run: docker run --rm -v $(pwd)/tests/SampleApps/${{ matrix.app }}:/app ${{ matrix.buildImage }} oryx build /app --platform python --platform-version ${{ matrix.version }} --property ${{ matrix.storageAccount }} --debug
 
       - uses: actions/checkout@v3
         with:
