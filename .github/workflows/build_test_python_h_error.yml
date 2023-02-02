@@ -1,6 +1,9 @@
 name: python.h error tests
 
 on:
+  push:
+    branches:
+      - 'main'
   workflow_dispatch:
 
 jobs:
