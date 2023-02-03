@@ -72,7 +72,7 @@ jobs:
         with: 
          registry: williamhecr.azurecr.io
          username: ${{ secrets.CLIENT_ID }}
-         password: ${{ secrets.CLIENT_SECRET }}  
+         password: ${{ secrets.CLIENT__SECRET }}  
       - uses: actions/checkout@v3
         with:
           repository: microsoft/Oryx
