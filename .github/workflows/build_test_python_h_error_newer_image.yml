@@ -53,18 +53,22 @@ jobs:
         version: 
           - 3.7.15
           - 3.7.16
+          - 3.8.12
           - 3.8.15
           - 3.8.16
+          - 3.9.7
           - 3.9.15
           - 3.9.16
           - 3.10.4
           - 3.10.8
           - 3.10.9
+          - 3.11.0
           - 3.11.1
         buildImage:
           - williamhecr.azurecr.io/oryx/build:github-actions-debian-bullseye
+          - williamhecr.azurecr.io/oryx/build:github-actions-debian-buster
         storageAccount:
-          - "ORYX_SDK_STORAGE_BASE_URL=https://oryxsdkssandbox.blob.core.windows.net; export C_INCLUDE_PATH=/tmp/oryx/platforms/python/3.10.9/include/python3.10; export CPLUS_INCLUDE_PATH=/tmp/oryx/platforms/python/3.10.9/include/python3.10"
+          - "ORYX_SDK_STORAGE_BASE_URL=https://oryxsdkssandbox.blob.core.windows.net"
 
     steps:
       - name: Log in to Azure Container Registry
